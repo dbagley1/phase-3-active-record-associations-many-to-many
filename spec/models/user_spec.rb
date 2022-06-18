@@ -3,10 +3,21 @@ describe User do
 
   before do
     user = User.create(name: "Liza")
-    game = Game.create(title: "Mario Kart", platform: "Switch", genre: "Racing", price: 60)
-    Review.create(score: 8, comment: "A classic", game_id: game.id, user_id: user.id)
+    game =
+      Game.create(
+        title: "Mario Kart",
+        platform: "Switch",
+        genre: "Racing",
+        price: 60
+      )
+    Review.create(
+      score: 8,
+      comment: "A classic",
+      game_id: game.id,
+      user_id: user.id
+    )
   end
-  
+
   it "has the correct columns in the games table" do
     expect(user).to have_attributes(name: "Liza")
   end
@@ -18,5 +29,4 @@ describe User do
   it "knows about its associated games" do
     expect(user.games.count).to eq(1)
   end
-  
 end
